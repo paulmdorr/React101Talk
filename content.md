@@ -1,0 +1,44 @@
+# ¿Qué es React?
+## Definición
+React es una librería de UI desarrollada por Facebook para facilitar la creación de UIs interactivas:
+  - Basada en componentes reusables
+  - Posibilidad de almacenar estado
+  - Ciclo de vida para redibujar
+  - Flujo unidireccional de datos
+  - Server-side rendering
+Algunas páginas que lo utilizan: Facebook, Instagram, Netflix y Mercado Libre.
+## Que NO es React
+No es un framework que va a hacer todo por nosotros, no cubre todas las necesidades que podemos tener en una app (por ej: conexión al server, ORM, conexión a DB, etc). Si lo pensamos desde el punto de vista del modelo MVC, sería sólo la parte de la vista.
+## Componentes
+Los componentes representan piezas independientes y reusables de nuestra aplicación. El trabajo de un componente es recibir datos de entrada y retornar un elemento de React para ser renderizado.
+### Componentes Funcionales (stateless)
+Estos representan la definición conceptual de componentes: reciben props y devuelven un elemento. Son la representación más simple de un componente y son ideales para secciones de presentación, ya que tienen varias ventajas:
+  - Son más fáciles de leer/entender
+  - No se necesita usar this
+  - Nos fuerzan a seguir buenas prácticas
+  - Fácilmente testeables
+### Componentes basados en Clases (stateful)
+Se suelen llamar containers o state managers y son utilizados para recibir y procesar los datos que serán pasados a los componentes stateless. Estos extienden de la clase Component de React y tienen varias diferencias con los funcionales:
+  - Estado interno
+  - Ciclo de vida
+  - Hay que usar this
+## Qué son las props
+Es la forma que tiene React de recibir datos en los componentes y se pasan de la misma forma que se le pasan a los elementos del DOM. Son inmutables. En el caso de los funcionales se pasa como parámetro y en los de clase están guardadas en this.props, salvo en el constructor donde se reciben como param y siempre se pasan al constructor padre. Se pueden definir valores por defecto para las propiedades. Si un componente necesita pasarle info a sus hijos, lo debe hacer utilizando props.
+## Qué es el state
+Sirve para almacenar información temporal de los componentes. Lo ideal es utilizarlo sólo con para controlar estado de UI y obtener cualquier otra información de las props. No hay que modificarlo directamente, en cambio hay que usar setState, una función que cambia el estado y lanza un re render del componente. Se inicializa en el constructor; este es el único caso en el cual se asigna sin usar setState. Si al guardar el nuevo estado se necesita información del estado anterior, hay que utilizar el parámetro prevState, ya que setState es asíncrona y no podemos saber cuándo estará actualizado el estado.
+## Ciclo de vida
+## Virtual DOM
+## Flujo unidireccional de datos
+## Aplicando estilos
+## Ejemplo en browser
+# create-react-app
+## Para que sirve?
+## Recrear el ejemplo
+## Side note: webpack
+# JSX
+## Qué es? A qué equivale en js puro?
+## Cambiar ejemplo inicial para usar JSX
+# To-Do app mini workshop
+# Extra: requests a server con fetch
+# Conclusión
+# Preguntas

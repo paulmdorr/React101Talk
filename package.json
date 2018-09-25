@@ -1,0 +1,19 @@
+{
+  "name": "React101",
+  "version": "1.0.0",
+  "description": "React 101 Talk",
+  "main": "index.mdx",
+  "author": "Paul M Dorr",
+  "license": "MIT",
+  "scripts": {
+    "start": "mdx-deck -p 8888 index.mdx"
+  },
+  "devDependencies": {
+    "mdx-deck": "^1.7.4",
+    "mdx-deck-code-surfer": "^0.4.1",
+    "raw-loader": "^0.5.1"
+  },
+  "dependencies": {
+    "prism-react-renderer": "^0.1.4"
+  }
+}

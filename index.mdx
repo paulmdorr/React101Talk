@@ -1,0 +1,89 @@
+export { future as theme } from 'mdx-deck/themes'
+import { Appear, Notes } from 'mdx-deck'
+import { CodeSurfer } from 'mdx-deck-code-surfer'
+import oceanicNext from "prism-react-renderer/themes/oceanicNext"
+
+# React 101
+---
+# ¿Qué es React?
+<Notes>
+  React es una librería de UI desarrollada por Facebook para facilitar la creación de UIs interactivas
+</Notes>
+---
+# ¿Qué NO es React?
+<Notes>
+  No es un framework que va a hacer todo por nosotros, no cubre todas las necesidades que podemos tener
+  en una app (por ej: conexión al server, ORM, conexión a DB, etc). Si lo pensamos desde el punto de
+  vista del modelo MVC, sería sólo la parte de la vista.
+</Notes>
+---
+# Componentes
+<Notes>
+  Los componentes representan piezas independientes y reusables de nuestra aplicación. El trabajo de un
+  componente es recibir datos de entrada y retornar un elemento de React para ser renderizado.
+</Notes>
+---
+### Componentes Funcionales (stateless)
+<Appear>
+  <div>Son más fáciles de leer/entender</div>
+  <div>No se necesita usar this</div>
+  <div>Nos fuerzan a seguir buenas prácticas</div>
+  <div>Fácilmente testeables</div>
+</Appear>
+<Notes>
+  Estos representan la definición conceptual de componentes: reciben props y devuelven un elemento. Son la representación más simple de un componente y son ideales para secciones de presentación, ya que tienen varias ventajas:
+</Notes>
+---
+### Componentes basados en Clases (stateful)
+<Appear>
+  <div>Estado interno</div>
+  <div>Ciclo de vida</div>
+  <div>Hay que usar this</div>
+</Appear>
+<Notes>
+  Se suelen llamar containers o state managers y son utilizados para recibir y procesar los datos que serán pasados a los componentes stateless. Estos extienden de la clase Component de React y tienen varias diferencias con los funcionales:
+</Notes>
+---
+<CodeSurfer
+  title="index.html"
+  code={require("!raw-loader!./src/browserExample/index.html")}
+  lang="html"
+  showNumbers={false}
+  theme={oceanicNext}
+  steps={[
+    { range: [8, 9] },
+    { tokens: { 8: [4, 5, 6, 7, 8] } },
+    { range: [12, 13] },
+    { lines: [16] },
+  ]}
+/>
+<Notes>
+  <ul>
+    <li>Ejemplo sencillo para probar desde el browser</li>
+    <li>Tenemos un ul que va a ser el contendor de nuestra app</li>
+    <li>Se carga react como script (local para que se vea bien), se puede cambiar por versión para prod pero ew</li>
+    <li>Se carga el js que tiene nuestros componentes</li>
+  </ul>
+</Notes>
+---
+<CodeSurfer
+  title="ToDo.js"
+  code={require("!raw-loader!./src/browserExample/ToDo.js")}
+  lang="javascript"
+  showNumbers={false}
+  theme={oceanicNext}
+  steps={[
+    { range: [3, 28] },
+    { range: [30, 40] },
+    { range: [42, 52] },
+  ]}
+/>
+<Notes>
+  <ul>
+    <li>App para mostrar lista To-Do, separada en componentes ToDoItem y ToDo</li>
+    <li>El componentes ToDoItem es stateful, para poder guardar el estado del checkbox</li>
+    <li>El componentes ToDo es stateless (funcional), sólo carga los datos y dibuja los items</li>
+  </ul>
+</Notes>
+---
+# The end
