@@ -29,7 +29,6 @@ Sirve para almacenar información temporal de los componentes. Lo ideal es utili
 ## Ciclo de vida
 ## Virtual DOM
 ## Flujo unidireccional de datos
-## Aplicando estilos
 ## Ejemplo en browser
 # create-react-app
 ## Para que sirve?

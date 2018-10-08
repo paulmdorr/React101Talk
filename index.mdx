@@ -17,6 +17,48 @@ import oceanicNext from "prism-react-renderer/themes/oceanicNext"
   vista del modelo MVC, sería sólo la parte de la vista.
 </Notes>
 ---
+<CodeSurfer
+  title="index.html"
+  code={require("!raw-loader!./src/browser-example/index.html")}
+  lang="html"
+  showNumbers={false}
+  theme={oceanicNext}
+  steps={[
+    { range: [9, 10] },
+    { tokens: { 9: [4, 5, 6, 7, 8] } },
+    { range: [13, 14] },
+    { lines: [18] },
+  ]}
+/>
+<Notes>
+  <ul>
+    <li>Ejemplo sencillo para probar desde el browser</li>
+    <li>Tenemos un ul que va a ser el contendor de nuestra app</li>
+    <li>Se carga react como script (local para que se vea bien), se puede cambiar por versión para prod pero ew</li>
+    <li>Se carga el js que tiene nuestros componentes</li>
+  </ul>
+</Notes>
+---
+<CodeSurfer
+  title="ToDo.js"
+  code={require("!raw-loader!./src/browser-example/js/generala.js")}
+  lang="javascript"
+  showNumbers={false}
+  theme={oceanicNext}
+  steps={[
+    { range: [1, 24] },
+    { range: [26, 45] },
+    { range: [47, 50] },
+  ]}
+/>
+<Notes>
+  <ul>
+    <li>Juego simplificado de generala, separado en componentes Game y Player</li>
+    <li>El componentes Game es stateful, para poder guardar el estado del juego</li>
+    <li>El componentes Player es stateless (funcional), sólo dibujar los jugadores y sus dados</li>
+  </ul>
+</Notes>
+---
 # Componentes
 <Notes>
   Los componentes representan piezas independientes y reusables de nuestra aplicación. El trabajo de un
@@ -31,7 +73,9 @@ import oceanicNext from "prism-react-renderer/themes/oceanicNext"
   <div>Fácilmente testeables</div>
 </Appear>
 <Notes>
-  Estos representan la definición conceptual de componentes: reciben props y devuelven un elemento. Son la representación más simple de un componente y son ideales para secciones de presentación, ya que tienen varias ventajas:
+  Estos representan la definición conceptual de componentes: reciben props y devuelven un elemento.
+  Son la representación más simple de un componente y son ideales para secciones de presentación,
+  ya que tienen varias ventajas:
 </Notes>
 ---
 ### Componentes basados en Clases (stateful)
@@ -41,49 +85,9 @@ import oceanicNext from "prism-react-renderer/themes/oceanicNext"
   <div>Hay que usar this</div>
 </Appear>
 <Notes>
-  Se suelen llamar containers o state managers y son utilizados para recibir y procesar los datos que serán pasados a los componentes stateless. Estos extienden de la clase Component de React y tienen varias diferencias con los funcionales:
-</Notes>
----
-<CodeSurfer
-  title="index.html"
-  code={require("!raw-loader!./src/browserExample/index.html")}
-  lang="html"
-  showNumbers={false}
-  theme={oceanicNext}
-  steps={[
-    { range: [8, 9] },
-    { tokens: { 8: [4, 5, 6, 7, 8] } },
-    { range: [12, 13] },
-    { lines: [16] },
-  ]}
-/>
-<Notes>
-  <ul>
-    <li>Ejemplo sencillo para probar desde el browser</li>
-    <li>Tenemos un ul que va a ser el contendor de nuestra app</li>
-    <li>Se carga react como script (local para que se vea bien), se puede cambiar por versión para prod pero ew</li>
-    <li>Se carga el js que tiene nuestros componentes</li>
-  </ul>
-</Notes>
----
-<CodeSurfer
-  title="ToDo.js"
-  code={require("!raw-loader!./src/browserExample/ToDo.js")}
-  lang="javascript"
-  showNumbers={false}
-  theme={oceanicNext}
-  steps={[
-    { range: [3, 28] },
-    { range: [30, 40] },
-    { range: [42, 52] },
-  ]}
-/>
-<Notes>
-  <ul>
-    <li>App para mostrar lista To-Do, separada en componentes ToDoItem y ToDo</li>
-    <li>El componentes ToDoItem es stateful, para poder guardar el estado del checkbox</li>
-    <li>El componentes ToDo es stateless (funcional), sólo carga los datos y dibuja los items</li>
-  </ul>
+  Se suelen llamar containers o state managers y son utilizados para recibir y procesar los datos
+  que serán pasados a los componentes stateless. Estos extienden de la clase Component de React y
+  tienen varias diferencias con los funcionales:
 </Notes>
 ---
 # The end

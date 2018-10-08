@@ -6,7 +6,8 @@
   "author": "Paul M Dorr",
   "license": "MIT",
   "scripts": {
-    "start": "mdx-deck -p 8888 index.mdx"
+    "start": "mdx-deck -p 8888 index.mdx",
+    "browserExample": "http-server ./src/browserExample -p 8787"
   },
   "devDependencies": {
     "mdx-deck": "^1.7.4",
