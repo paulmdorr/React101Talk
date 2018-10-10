@@ -1,6 +1,8 @@
-'use strict'
+import React, { Component } from 'react'
+import Player from './Player'
+import { generateDice, calculatePoints } from '../utils/utils'
 
-class Game extends React.Component {
+class Game extends Component {
   constructor(props) {
     super(props)
     const { players } = props
@@ -50,7 +52,7 @@ class Game extends React.Component {
   render() {
     const playersElements = this.state.players.map(
       (playerProps, index) => {
-        const playerProps = {
+        playerProps = {
           ...playerProps,
           key: index, 
           nextTurn: this.nextTurn,
@@ -66,29 +68,4 @@ class Game extends React.Component {
   }
 }
 
-function Player(props) {
-  const {
-    playerName, isAI, dice, nextTurn, index, currentPlayer
-  } = props
-  const showButton = !isAI && (index === currentPlayer)
-  const button = <input type="button" onClick={() => nextTurn() } value="Tirar dados" />
-
-  return (
-    <div>
-      <div>{ playerName }</div>
-      <div>
-        { dice.map((elem, key) => (
-          <img key={key} className="dice" src={ `assets/dice-${elem}.svg` } />
-        )) }
-      </div>
-      { showButton && button }
-    </div>
-  )
-}
-
-let props = getData()
-
-ReactDOM.render(
-  <Game {...props} />,
-  document.getElementById('container')
-)
+export default Game
