@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { generateDice, calculatePoints } from '../utils'
+import './styles/Game.scss'
 import Player from './Player'
-import { generateDice, calculatePoints } from '../utils/utils'
+import Result from './Result';
 
 class Game extends Component {
   constructor(props) {
@@ -17,6 +19,7 @@ class Game extends Component {
         },
       })),
       currentPlayer: 0,
+      showResult: false,
     }
 
     this.nextTurn = this.nextTurn.bind(this)
@@ -25,8 +28,8 @@ class Game extends Component {
   nextTurn() {
     this.setState(prevState => {
       let players = [...prevState.players]
-      let lasPlayer = prevState.currentPlayer < players.length - 1
-      let nextPlayer = lasPlayer ? prevState.currentPlayer + 1 : 0
+      let lastPlayer = prevState.currentPlayer < players.length - 1
+      let nextPlayer = lastPlayer ? prevState.currentPlayer + 1 : 0
       let dice = generateDice()
 
       players[prevState.currentPlayer] = {
@@ -35,7 +38,11 @@ class Game extends Component {
         result: calculatePoints(dice),
       }
 
-      return { players, currentPlayer: nextPlayer }
+      return {
+        players,
+        currentPlayer: nextPlayer,
+        showResult: nextPlayer === 0,
+      }
     })
   }
 
@@ -60,11 +67,14 @@ class Game extends Component {
           currentPlayer: this.state.currentPlayer,
         }
         
-        return <Player {...playerProps} />
+        return <Player { ...playerProps } />
       }
     )
 
-    return playersElements
+    return <div className="game">
+      { playersElements }
+      <Result players={ this.state.players } showResult={ this.state.showResult } />
+    </div>
   }
 }
 

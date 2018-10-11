@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import Game from './components/Game'
 import * as serviceWorker from './serviceWorker'
-import { getData } from './utils/utils'
+import { getData } from './utils'
 
 const props = getData()
 

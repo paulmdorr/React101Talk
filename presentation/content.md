@@ -32,12 +32,10 @@ Sirve para almacenar información temporal de los componentes. Lo ideal es utili
 ## Ejemplo en browser
 # create-react-app
 ## Para que sirve?
-## Recrear el ejemplo
-## Side note: webpack
+Es una herramienta que nos ayuda a crear una app basada en React desde cero, sin necesidad de preocuparnos por configuraciones, dependencias o servidores de desarrollo. Para poder correr y hacer builds de la app utiliza webpack, otra herramienta conocida como "bundler", que se encarga de convertir los archivos (js, css, etc) que escribimos para nuestra app React, junto con sus dependencias, en bundles (un solo archivo de cada tipo) que pueda ser interpretado por el browser.
 # JSX
 ## Qué es? A qué equivale en js puro?
-## Cambiar ejemplo inicial para usar JSX
+JSX es un dialecto de JS que embebe elementos de HTML dentro del código JavasCript. Como el browser no puede interpretar JSX, cada elemento es transpilado a React.createElement() usando Babel y webpack. Es más legible que React.createElement().
+## Recrear el ejemplo
 # To-Do app mini workshop
-# Extra: requests a server con fetch
-# Conclusión
 # Preguntas

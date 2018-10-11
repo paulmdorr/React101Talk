@@ -1,12 +1,16 @@
 import React from 'react'
-import './Player.css'
+import './styles/Player.scss'
 
 function Player(props) {
   const {
     playerName, isAI, dice, nextTurn, index, currentPlayer
   } = props
   const showButton = !isAI && (index === currentPlayer)
-  const button = <input type="button" onClick={() => nextTurn() } value="Tirar dados" />
+  const button = <input
+    type="button"
+    onClick={() => nextTurn() }
+    value="Tirar dados"
+  />
 
   return (
     <div>
@@ -17,7 +21,8 @@ function Player(props) {
             key={key}
             className="dice"
             src={ `assets/dice-${elem}.svg` }
-            alt={ `Dice-${elem}.svg` } />
+            alt={ `Dice-${elem}.svg` }
+          />
         )) }
       </div>
       { showButton && button }
