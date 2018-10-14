@@ -90,4 +90,40 @@ import oceanicNext from "prism-react-renderer/themes/oceanicNext"
   tienen varias diferencias con los funcionales:
 </Notes>
 ---
+<CodeSurfer
+  title="ToDo.js"
+  code={require("!raw-loader!../browser-example/js/generala.js")}
+  lang="javascript"
+  showNumbers={false}
+  theme={oceanicNext}
+  steps={[
+    { range: [26, 45] },
+    { range: [27, 28] },
+    { range: [29, 44] },
+    { range: [1, 24] },
+    { range: [5, 7] },
+    { range: [13, 15] },
+    { range: [18, 23] },
+  ]}
+/>
+<Notes>
+  <ul>
+    <li>Player es un componente stateless, sólo retorna elementos de React, sin almacenar estado interno</li>
+    <li>
+      <ul>
+        <li>Recibe las props</li>
+        <li>Retorna elementos basados en esas props</li>
+      </ul>
+    </li>
+    <li>Game necesita almacenar el estado actual del juego, por eso es un componente stateful</li>
+    <li>
+      <ul>
+        <li>Inicializa el estado</li>
+        <li>Actualiza el estado al llamar a nextTurn()</li>
+        <li>Retorna elementos pasando el estado como props</li>
+      </ul>
+    </li>
+  </ul>
+</Notes>
+---
 # The end
