@@ -8,26 +8,24 @@ function Player(props) {
   const showButton = !isAI && (index === currentPlayer)
   const button = <input
     type="button"
-    onClick={() => nextTurn() }
+    onClick={() => nextTurn()}
     value="Tirar dados"
   />
 
-  return (
+  return <div className="player">
+    <div className="playerName">{ playerName }</div>
     <div>
-      <div>{ playerName }</div>
-      <div>
-        { dice.map((elem, key) => (
-          <img
-            key={key}
-            className="dice"
-            src={ `assets/dice-${elem}.svg` }
-            alt={ `Dice-${elem}.svg` }
-          />
-        )) }
-      </div>
-      { showButton && button }
+      { dice.map((elem, key) => (
+        <img
+          key={key}
+          className="dice"
+          src={`assets/dice-${elem}.svg`}
+          alt={`Dice-${elem}.svg`}
+        />
+      )) }
     </div>
-  )
+    { showButton && button }
+  </div>
 }
 
 export default Player

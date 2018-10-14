@@ -1,7 +1,15 @@
-.dice {
-  display: inline-block;
-  height: 60px;
-  margin: 5px;
-  text-align: center;
-  width: 60px;
+.player {
+  margin-top: 20px;
+
+  .playerName {
+    margin-bottom: 5px;
+  }
+
+  .dice {
+    display: inline-block;
+    height: 60px;
+    margin: 5px;
+    text-align: center;
+    width: 60px;
+  }
 }

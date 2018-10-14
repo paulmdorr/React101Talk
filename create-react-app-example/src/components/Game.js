@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { generateDice, calculatePoints } from '../utils'
 import './styles/Game.scss'
 import Player from './Player'
-import Result from './Result';
+import Result from './Result'
 
 class Game extends Component {
   constructor(props) {
@@ -23,6 +23,16 @@ class Game extends Component {
     }
 
     this.nextTurn = this.nextTurn.bind(this)
+  }
+
+  componentDidUpdate() {
+    const { players, currentPlayer } = this.state
+
+    if (players[currentPlayer].isAI) {
+      setTimeout(() => {
+        this.nextTurn()
+      }, 500)
+    }
   }
 
   nextTurn() {
@@ -46,34 +56,28 @@ class Game extends Component {
     })
   }
 
-  componentDidUpdate() {
-    const { players, currentPlayer } = this.state
-
-    if (players[currentPlayer].isAI) {
-      setTimeout(() => {
-        this.nextTurn()
-      }, 500)
-    }
-  }
-
   render() {
     const playersElements = this.state.players.map(
       (playerProps, index) => {
         playerProps = {
           ...playerProps,
-          key: index, 
+          key: index,
           nextTurn: this.nextTurn,
           index,
           currentPlayer: this.state.currentPlayer,
         }
-        
-        return <Player { ...playerProps } />
+
+        return <Player {...playerProps} />
       }
     )
 
     return <div className="game">
       { playersElements }
-      <Result players={ this.state.players } showResult={ this.state.showResult } />
+      <Result
+        players={this.state.players}
+        showResult={this.state.showResult}
+
+      />
     </div>
   }
 }

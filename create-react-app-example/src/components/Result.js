@@ -8,11 +8,9 @@ function Result(props) {
   if (showResult) {
     const winnerText = generateWinnerText(players)
 
-    return (
-      <div>
-        <div>{ winnerText }</div>
-      </div>
-    )
+    return <div className="result">
+      { winnerText }
+    </div>
   }
 
   return ''
