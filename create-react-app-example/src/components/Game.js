@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import { generateDice, calculatePoints } from '../utils'
 import './styles/Game.scss'
@@ -38,8 +39,8 @@ class Game extends Component {
   nextTurn() {
     this.setState(prevState => {
       let players = [...prevState.players]
-      let lastPlayer = prevState.currentPlayer < players.length - 1
-      let nextPlayer = lastPlayer ? prevState.currentPlayer + 1 : 0
+      let lastPlayer = prevState.currentPlayer === players.length - 1
+      let nextPlayer = !lastPlayer ? prevState.currentPlayer + 1 : 0
       let dice = generateDice()
 
       players[prevState.currentPlayer] = {
