@@ -1,7 +1,7 @@
 const includesAll = (arr1, arr2) => {
   return arr2.every(elem => arr1.includes(elem))
 }
- 
+
 export function getData() {
   return {
     players: [
@@ -29,7 +29,8 @@ export function calculatePoints(dice) {
     points: 0,
     text: '',
   }
-  let reducer = (count, elem) => elem === 2 ? count + 1 : count
+  let reducer = (count, elem) =>
+    elem === 2 ? count + 1 : count
 
   dice.forEach(elem => diceCount[elem-1]++)
 
@@ -74,12 +75,18 @@ export function calculatePoints(dice) {
 }
 
 export function generateWinnerText(players) {
-  const highest = Math.max(...(players.map(player => player.result.points)))
-  const winners = players.filter(player => player.result.points === highest)
+  const highest = Math.max(
+    ...(players.map(player => player.result.points))
+  )
+  const winners = players.filter(
+    player => player.result.points === highest
+  )
   const resultText = winners[0].result.text
 
   if (winners.length > 1) {
-    const winnersText = winners.map(({ playerName }) => playerName).join(' y ')
+    const winnersText = winners.map(
+      ({ playerName }) => playerName
+    ).join(' y ')
 
     return `Empataron ${winnersText} con ${resultText}`
   }
