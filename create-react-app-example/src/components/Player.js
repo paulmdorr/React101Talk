@@ -1,16 +1,23 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './styles/Player.scss'
 
 function Player(props) {
   const {
     playerName, isAI, dice, nextTurn, index, currentPlayer
   } = props
-  const showButton = !isAI && (index === currentPlayer)
-  const button = <input
-    type="button"
-    onClick={() => nextTurn()}
-    value="Tirar dados"
-  />
+
+  function showButton() {
+    if (!isAI && (index === currentPlayer)) {
+      return <input
+        type="button"
+        onClick={() => nextTurn()}
+        value="Tirar dados"
+      />
+    }
+
+    return ''
+  }
 
   return <div className="player">
     <div className="playerName">{ playerName }</div>
@@ -24,8 +31,21 @@ function Player(props) {
         />
       )) }
     </div>
-    { showButton && button }
+    { showButton() }
   </div>
+}
+
+Player.propTypes = {
+  playerName: PropTypes.string.isRequired,
+  isAI: PropTypes.bool,
+  dice: PropTypes.arrayOf(PropTypes.number).isRequired,
+  nextTurn: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+  currentPlayer: PropTypes.number.isRequired,
+}
+
+Player.defaultProps = {
+  isAI: false,
 }
 
 export default Player
