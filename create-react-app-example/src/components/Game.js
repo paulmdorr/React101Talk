@@ -76,7 +76,6 @@ class Game extends Component {
       <Result
         players={this.state.players}
         showResult={this.state.showResult}
-
       />
     </div>
   }

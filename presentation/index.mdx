@@ -1,5 +1,5 @@
 export { future as theme } from 'mdx-deck/themes'
-import { Appear, Notes } from 'mdx-deck'
+import { Appear, Notes, Image } from 'mdx-deck'
 import { CodeSurfer } from 'mdx-deck-code-surfer'
 import oceanicNext from "prism-react-renderer/themes/oceanicNext"
 
@@ -33,8 +33,9 @@ import oceanicNext from "prism-react-renderer/themes/oceanicNext"
 <Notes>
   <ul>
     <li>Ejemplo sencillo para probar desde el browser</li>
-    <li>Tenemos un ul que va a ser el contendor de nuestra app</li>
-    <li>Se carga react como script (local para que se vea bien), se puede cambiar por versión para prod pero ew</li>
+    <li>Tenemos un div que va a ser el contendor de nuestra app</li>
+    <li>Se carga react como script (local para que se vea bien), se puede cambiar por versión para prod pero
+      lo ideal para producción es usar React desde node y generar bundles para el browser.</li>
     <li>Se carga el js que tiene nuestros componentes</li>
   </ul>
 </Notes>
@@ -65,10 +66,9 @@ import oceanicNext from "prism-react-renderer/themes/oceanicNext"
   componente es recibir datos de entrada y retornar un elemento de React para ser renderizado.
 </Notes>
 ---
-### Componentes Funcionales (stateless)
+## Componentes Funcionales (stateless)
 <Appear>
   <div>Son más fáciles de leer/entender</div>
-  <div>No se necesita usar this</div>
   <div>Nos fuerzan a seguir buenas prácticas</div>
   <div>Fácilmente testeables</div>
 </Appear>
@@ -78,11 +78,10 @@ import oceanicNext from "prism-react-renderer/themes/oceanicNext"
   ya que tienen varias ventajas:
 </Notes>
 ---
-### Componentes basados en Clases (stateful)
+## Componentes basados en Clases (stateful)
 <Appear>
   <div>Estado interno</div>
   <div>Ciclo de vida</div>
-  <div>Hay que usar this</div>
 </Appear>
 <Notes>
   Se suelen llamar containers o state managers y son utilizados para recibir y procesar los datos
@@ -91,7 +90,7 @@ import oceanicNext from "prism-react-renderer/themes/oceanicNext"
 </Notes>
 ---
 <CodeSurfer
-  title="ToDo.js"
+  title="generala.js"
   code={require("!raw-loader!../browser-example/js/generala.js")}
   lang="javascript"
   showNumbers={false}
@@ -125,5 +124,151 @@ import oceanicNext from "prism-react-renderer/themes/oceanicNext"
     </li>
   </ul>
 </Notes>
+---
+# Virtual DOM
+<Notes>
+  Para controlar cómo y cuando se dibujan los elementos en la pantalla, React utiliza el Virtual DOM. 
+  Es una representación del árbol de elementos que se retornan en la función render(), con las props y el 
+  state de React, muy similar a como el browser mantiene una representación del DOM real para poder dibujarlo. 
+  React sincroniza el Virtual DOM con el real, decidiendo qué elementos necesitan ser redibujados, evitando 
+  de esta forma llamadas innecesarias a actualizar el DOM real. La velocidad para actualizar elementos en el
+  Virtual DOM es mucho más rápida que si se trabajara sobre el DOM real.
+  Mostrar ejemplo actualizando DOM.
+</Notes>
+---
+# create-react-app
+<Notes>
+  Es una herramienta que nos ayuda a crear una app basada en React desde cero, sin necesidad de 
+  preocuparnos por configuraciones, dependencias o servidores de desarrollo. Para poder correr y hacer 
+  builds de la app utiliza webpack, otra herramienta conocida como "bundler", que se encarga de convertir 
+  los archivos (js, css, etc) que escribimos para nuestra app React, junto con sus dependencias, en bundles 
+  (un solo archivo de cada tipo) que pueda ser interpretado por el browser.
+</Notes>
+---
+# JSX
+<Notes>
+  Qué es? A qué equivale en js puro?
+  JSX es un dialecto de JS que embebe elementos de HTML dentro del código JavasCript. Como el browser 
+  no puede interpretar JSX, cada elemento es transpilado a React.createElement() usando Babel y webpack. 
+  Es más legible que React.createElement().
+</Notes>
+---
+# Ciclo de vida
+<Notes>
+  Antes y después de ser dibujados como un elemento en el Virtual DOM, cada componente de React pasa 
+  por ciertos métodos que nos ayudan a interactuar con ellos. Este conjunto de métodos es conocido como el 
+  ciclo de vida de React. (Mostrar gráfica de ciclo de vida y explicar algunos métodos)
+</Notes>
+---
+# Flujo unidireccional de datos
+<Notes>
+  Como se habló en la sección de state y componentes stateful, lo ideal es tener pocos (dentro de lo 
+  posible sólo uno) componentes con estado, los cuales actúan como contenedores y envían ese estado a sus 
+  hijos a través de props. Para que este componente container sepa cuándo es necesario actualizar el estado, 
+  le pasa a los hijos (a través de las props) funciones utilizadas como callbacks, a las cuales los componentes 
+  hijos llaman cada vez que necesitan cambiar parte del estado.
+</Notes>
+---
+<CodeSurfer
+  title="utils.js"
+  code={require("!raw-loader!../create-react-app-example/src/utils.js")}
+  lang="javascript"
+  showNumbers={false}
+  theme={oceanicNext}
+  steps={[
+    { range: [5, 18] },
+  ]}
+/>
+<Notes>
+  Este objeto es el "origen de datos" para crear los Players en el componente Game.
+</Notes>
+---
+<CodeSurfer
+  title="index.js"
+  code={require("!raw-loader!../create-react-app-example/src/index.js")}
+  lang="javascript"
+  showNumbers={false}
+  theme={oceanicNext}
+  steps={[
+    { range: [8, 13] },
+  ]}
+/>
+<Notes>
+  El index.js es el punto de entrada de la app, webpack se encarga de cargar este archivo.
+  Aquí se traen los datos desde utils y se renderiza el componente Game usando ReactDOM como vimos en el anterior ejemplo.
+</Notes>
+---
+<CodeSurfer
+  title="Game.js"
+  code={require("!raw-loader!../create-react-app-example/src/components/Game.js")}
+  lang="javascript"
+  showNumbers={false}
+  theme={oceanicNext}
+  steps={[
+    { range: [1, 5] },
+    { range: [5, 5] },
+    { range: [12, 23] },
+    { range: [28, 36] },
+    { range: [38, 57] },
+    { range: [59, 82] },
+    { range: [84, 84] },
+  ]}
+/>
+<Notes>
+  <ul>
+    <li>Game y Player están en diferentes archivos</li>
+    <li>
+      <ul>
+        <li>Se pueden ver los import</li>
+        <li>Tenemos un nuevo componente llamado Result</li>
+        <li>En el state se inicializan los Players, el player actual y el resultado</li>
+        <li>Se usa componentDidUpdate para saber si se actualizó el componente y poner un timeOut si es una AI</li>
+        <li>En nextTurn se generan los dados del jugador actual, se calculan sus puntos y se cambia al siguiente jugador</li>
+      </ul>
+    </li>
+  </ul>
+</Notes>
+---
+<CodeSurfer
+  title="Player.js"
+  code={require("!raw-loader!../create-react-app-example/src/components/Player.js")}
+  lang="javascript"
+  showNumbers={false}
+  theme={oceanicNext}
+  steps={[
+    { range: [1, 3] },
+    { range: [6, 8] },
+    { range: [10, 20] },
+    { range: [22, 35] },
+    { range: [38, 45] },
+    { range: [47, 48] },
+  ]}
+/>
+<Notes>
+  <ul>
+    <li>Player es un componente funcional como antes</li>
+    <li>
+      <ul>
+        <li>Importa PropTypes</li>
+        <li>Tiene más props porque el juego es más completo</li>
+        <li>Función interna para decidir si mostrar el botón o no</li>
+        <li>Este botón llama a la función nextTurn() del padre (Game) para actualizar su estado</li>
+        <li>Se dibuja similar al del otro ejemplo pero en JSX</li>
+        <li>Se agregan PropTypes para validar las props que recibe</li>
+      </ul>
+    </li>
+  </ul>
+</Notes>
+---
+<CodeSurfer
+  title="Result.js"
+  code={require("!raw-loader!../create-react-app-example/src/components/Result.js")}
+  lang="javascript"
+  showNumbers={false}
+  theme={oceanicNext}
+  steps={[
+    { range: [8, 14] },
+  ]}
+/>
 ---
 # The end
