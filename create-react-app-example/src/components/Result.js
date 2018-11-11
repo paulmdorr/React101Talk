@@ -14,7 +14,7 @@ function Result(props) {
     </div>
   }
 
-  return ''
+  return null
 }
 
 Result.propTypes = {

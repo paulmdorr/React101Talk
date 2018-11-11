@@ -7,13 +7,13 @@ import oceanicNext from "prism-react-renderer/themes/oceanicNext"
 ---
 # ¿Qué es React?
 <Notes>
-  React es una librería de UI desarrollada por Facebook para facilitar la creación de UIs interactivas
+  React es una librería desarrollada por Facebook para facilitar la creación de UIs interactivas
 </Notes>
 ---
 # ¿Qué NO es React?
 <Notes>
   No es un framework que va a hacer todo por nosotros, no cubre todas las necesidades que podemos tener
-  en una app (por ej: conexión al server, ORM, conexión a DB, etc). Si lo pensamos desde el punto de
+  en una app (por ej: conexión al server, conexión a DB, etc). Si lo pensamos desde el punto de
   vista del modelo MVC, sería sólo la parte de la vista.
 </Notes>
 ---
@@ -63,7 +63,19 @@ import oceanicNext from "prism-react-renderer/themes/oceanicNext"
 # Componentes
 <Notes>
   Los componentes representan piezas independientes y reusables de nuestra aplicación. El trabajo de un
-  componente es recibir datos de entrada y retornar un elemento de React para ser renderizado.
+  componente es recibir datos de entrada y retornar un elemento de React para ser renderizado. Pueden tener
+  estado o no, lo cual nos da dos tipos de componentes: stateful y stateless.
+</Notes>
+---
+## Componentes basados en Clases (stateful)
+<Appear>
+  <div>Estado interno</div>
+  <div>Ciclo de vida</div>
+</Appear>
+<Notes>
+  Se suelen llamar containers o state managers y son utilizados para recibir y procesar los datos
+  que serán pasados a los componentes stateless. Estos extienden de la clase Component de React y
+  tienen varias diferencias con los funcionales:
 </Notes>
 ---
 ## Componentes Funcionales (stateless)
@@ -76,17 +88,6 @@ import oceanicNext from "prism-react-renderer/themes/oceanicNext"
   Estos representan la definición conceptual de componentes: reciben props y devuelven un elemento.
   Son la representación más simple de un componente y son ideales para secciones de presentación,
   ya que tienen varias ventajas:
-</Notes>
----
-## Componentes basados en Clases (stateful)
-<Appear>
-  <div>Estado interno</div>
-  <div>Ciclo de vida</div>
-</Appear>
-<Notes>
-  Se suelen llamar containers o state managers y son utilizados para recibir y procesar los datos
-  que serán pasados a los componentes stateless. Estos extienden de la clase Component de React y
-  tienen varias diferencias con los funcionales:
 </Notes>
 ---
 <CodeSurfer
@@ -211,7 +212,6 @@ import oceanicNext from "prism-react-renderer/themes/oceanicNext"
     { range: [28, 36] },
     { range: [38, 57] },
     { range: [59, 82] },
-    { range: [84, 84] },
   ]}
 />
 <Notes>

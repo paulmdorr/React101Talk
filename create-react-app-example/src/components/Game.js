@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 import { generateDice, calculatePoints } from '../utils'
 import './styles/Game.scss'
@@ -13,7 +12,7 @@ class Game extends Component {
     this.state = {
       players: players.map(player => ({
         ...player,
-        dice: [0, 0, 0, 0, 0],
+        dice: [1, 1, 1, 1, 1],
         result: {
           points: 0,
           text: '',

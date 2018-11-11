@@ -3,7 +3,7 @@ class Game extends React.Component {
     super(props)
 
     this.state = {
-      dice: [0, 0, 0, 0, 0],
+      dice: [1, 1, 1, 1, 1],
     }
 
     this.nextTurn = this.nextTurn.bind(this)
@@ -26,20 +26,20 @@ class Game extends React.Component {
 function Player(props) {
   const { dice, nextTurn } = props
 
-  return React.createElement("div", null,
-    React.createElement("div", null,
+  return React.createElement('div', {className: 'player'},
+    React.createElement('div', {className: 'dice-container'},
       dice.map(function(elem, key) {
-        return React.createElement("img", {
+        return React.createElement('img', {
           key: key,
-          className: "dice",
-          src: "assets/dice-" + elem + ".svg",
+          className: 'dice',
+          src: 'assets/dice-' + elem + '.svg',
         })
       })
     ),
-    React.createElement("input", {
-      type: "button",
+    React.createElement('input', {
+      type: 'button',
       onClick: () => nextTurn(),
-      value: "Tirar dados",
+      value: 'Tirar dados',
     })
   )
 }

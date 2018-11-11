@@ -15,8 +15,6 @@ function Player(props) {
         value="Tirar dados"
       />
     }
-
-    return ''
   }
 
   return <div className="player">

@@ -1,0 +1,16 @@
+div.ToDo ul {
+  border-top: 2px solid #4d5463;
+  list-style-type: none;
+  margin: 20px auto;
+  min-height: 80vh;
+  padding: 0;
+  width: 50vw;
+}
+
+div.ToDo input {
+  border: 2px solid #383838;
+  border-radius: 3px;
+  font-size: calc(7px + 1.5vmin);
+  margin: 5px;
+  padding: 5px;
+}
